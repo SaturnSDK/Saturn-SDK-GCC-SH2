@@ -1,0 +1,12 @@
+# Temporary directories
+download
+source
+build
+toolchain
+installer
+
+# Vim
+*.vim
+*.swp
+*.swo
+*.swn
