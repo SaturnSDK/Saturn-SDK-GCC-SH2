@@ -1,0 +1,22 @@
+| SEGA SATURN HITACHI SUPERH SH-2 GCC C COMPILER |
+
+|OVERVIEW|
+This is an optimised version of the GCC C compiler for Hitachi SuperH SH-2
+microprocessors.
+
+|BUILDING|
+In order to successfully build GCC, the following environment variables need
+to be defined:
+export SRCDIR=$(pwd)/source
+export BUILDDIR=$(pwd)/build
+export TARGETMACH=sh-unknown-coff
+export BUILDMACH=x86_64-pc-linux-gnu
+export INSTALLDIR=$(pwd)/toolchain
+export SYSROOTDIR=$INSTALLDIR/sysroot
+export ROOTDIR=$(pwd)
+export DOWNLOADDIR=$(pwd)/download
+export PROGRAM_PREFIX=sh-unknown-coff-
+
+The BUILDMACH is the system architecture the compiler will run on, while the
+TARGETMARCH is the architecture the program or library created will run on.
+
