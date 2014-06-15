@@ -9,13 +9,17 @@ In order to successfully build GCC, the following environment variables need
 to be defined:
 export SRCDIR=$(pwd)/source
 export BUILDDIR=$(pwd)/build
-export TARGETMACH=sh-unknown-coff
+export TARGETMACH=sh-elf
 export BUILDMACH=x86_64-pc-linux-gnu
 export INSTALLDIR=$(pwd)/toolchain
 export SYSROOTDIR=$INSTALLDIR/sysroot
 export ROOTDIR=$(pwd)
 export DOWNLOADDIR=$(pwd)/download
-export PROGRAM_PREFIX=sh-unknown-coff-
+export PROGRAM_PREFIX=saturn-sh2-
+
+PROGRAM_PREFIX is the prefix used before the tool's name, such as:
+saturn-sh2-gcc, where gcc is the program, with saturn-sh2- being the prefix.
+BUILDMACH is the development machine the compiler will run on.
 
 The BUILDMACH is the system architecture the compiler will run on, while the
 TARGETMARCH is the architecture the program or library created will run on.
