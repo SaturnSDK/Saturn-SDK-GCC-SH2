@@ -8,23 +8,23 @@ export MINOR_BUILD_NUM=`echo $VERSION_NUM | sed 's/-[^.]*$//' | sed -r 's/.[^.]*
 export REVISION_BUILD_NUM=`echo $VERSION_NUM | sed 's/-[^.]*$//' | sed -r 's/.*(.[0-9].)//'`
 export BUILD_NUM=`echo $VERSION_NUM | sed -e 's/[0-9].[0-9].[0-9]//' -e 's/-//'`
 
-if [ $TAG_NAME -z ]; then
+if [ -z $TAG_NAME ]; then
 	TAG_NAME=unknown
 fi
 
-if [ $MAJOR_BUILD_NUM -z ]; then
+if [ -z $MAJOR_BUILD_NUM ]; then
 	MAJOR_BUILD_NUM=0
 fi
 
-if [ $MINOR_BUILD_NUM -z ]; then
+if [ -z $MINOR_BUILD_NUM ]; then
 	MINOR_BUILD_NUM=0
 fi
 
-if [ $REVISION_BUILD_NUM -z ]; then
+if [ -z $REVISION_BUILD_NUM ]; then
 	REVISION_BUILD_NUM=0
 fi
 
-if [ $BUILD_NUM -z ]; then
+if [ -z $BUILD_NUM ]; then
 	BUILD_NUM=0
 fi
 
@@ -35,7 +35,7 @@ cat > $ROOTDIR/installerpackage/org.opengamedevelopers.sega.saturn.sdk.gcc/meta/
 <Package>
 	<DisplayName>SEGA Saturn SDK GCC 4.9.0</DisplayName>
 	<Description>GCC 4.9.0 optimised for the SEGA Saturn</Description>
-	<Version>$MAJOR_BUILD_NUM.$MINOR_BUILD_NUM.$REVISION_BUILD_NUM.$BUILD_NUM</Version>
+	<Version>${MAJOR_BUILD_NUM}.${MINOR_BUILD_NUM}.${REVISION_BUILD_NUM}.${BUILD_NUM}</Version>
 	<Name>org.opengamedevelopers.sega.saturn.sdk.gcc</Name>
 	<ReleaseDate>`git log --pretty=format:"%ci" -1 | sed -e 's/ [^ ]*$//g'`</ReleaseDate>
 	<Licenses>
