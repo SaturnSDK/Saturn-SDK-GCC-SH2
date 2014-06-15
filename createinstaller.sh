@@ -33,8 +33,8 @@ mkdir -p $ROOTDIR/installerpackage/{org.opengamedevelopers.sega.saturn.sdk.gcc/{
 cat > $ROOTDIR/installerpackage/org.opengamedevelopers.sega.saturn.sdk.gcc/meta/package.xml << __EOF__
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-	<DisplayName>SEGA Saturn SDK GCC 3.4.6</DisplayName>
-	<Description>GCC 3.4.6 optimised for the SEGA Saturn</Description>
+	<DisplayName>SEGA Saturn SDK GCC 4.9.0</DisplayName>
+	<Description>GCC 4.9.0 optimised for the SEGA Saturn</Description>
 	<Version>$MAJOR_BUILD_NUM.$MINOR_BUILD_NUM.$REVISION_BUILD_NUM.$BUILD_NUM</Version>
 	<Name>org.opengamedevelopers.sega.saturn.sdk.gcc</Name>
 	<ReleaseDate>`git log --pretty=format:"%ci" -1 | sed -e 's/ [^ ]*$//g'`</ReleaseDate>
