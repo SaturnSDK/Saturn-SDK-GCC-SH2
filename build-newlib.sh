@@ -16,7 +16,7 @@ export AS_FOR_TARGET=${CROSS}as
 export AR_FOR_TARGET=${CROSS}ar
 export RANLIB_FOR_TARGET=${CROSS}ranlib
 
-$SRCDIR/newlib-2.1.0/configure --prefix=$INSTALLDIR --target=$TARGETMACH --host=$BUILDMARCH
+$SRCDIR/newlib-2.1.0/configure --prefix=$INSTALLDIR --target=$TARGETMACH --build=$BUILDMACH --host=$HOSTMACH
 
 make all -j${NCPU}
 make install -j${NCPU}
