@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-export NCPU=`nproc`
-
 [ -d $BUILDDIR/newlib ] && rm -rf $BUILDDIR/newlib
 
 mkdir -p $BUILDDIR/newlib
@@ -20,6 +18,3 @@ $SRCDIR/newlib-2.1.0/configure --prefix=$INSTALLDIR --target=$TARGETMACH --build
 
 make all -j${NCPU}
 make install -j${NCPU}
-
-cd $ROOTDIR
-

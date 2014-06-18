@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-export NCPU=`nproc`
-
 [ -d $BUILDDIR/binutils ] && rm -rf $BUILDDIR/binutils
 
 mkdir -p $BUILDDIR/binutils
@@ -15,5 +13,3 @@ $SRCDIR/binutils-2.24/configure \
 
 make -j${NCPU}
 make install -j${NCPU}
-
-cd $ROOTDIR

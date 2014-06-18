@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Extracting source files..."
+
 if [ ! -d $SRCDIR ]; then
 	mkdir -p $SRCDIR
 fi
@@ -58,6 +60,4 @@ if [ ! -d gmp-6.0.0 ]; then
 	cp -rv gmp-6.0.0 gcc-4.9.0/gmp
 fi
 
-
-
-cd $ROOTDIR
+echo "Done"

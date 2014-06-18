@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-export NCPU=`nproc`
-
 [ -d $BUILDDIR/gcc-final ] && rm -rf $BUILDDIR/gcc-final
 
 mkdir $BUILDDIR/gcc-final
@@ -25,5 +23,3 @@ $SRCDIR/gcc-4.9.0/configure \
 
 make -j${NCPU}
 make install -j${NCPU}
-
-cd $ROOTDIR

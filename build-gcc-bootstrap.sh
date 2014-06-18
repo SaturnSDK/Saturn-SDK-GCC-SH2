@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-export NCPU=`nproc`
-
 [ -d $BUILDDIR/gcc-bootstrap ] && rm -rf $BUILDDIR/gcc-bootstrap
 
 mkdir -p $BUILDDIR/gcc-bootstrap
@@ -22,5 +20,3 @@ make all-gcc -j${NCPU}
 make install-gcc -j${NCPU}
 make all-target-libgcc -j${NCPU}
 make install-target-libgcc -j${NCPU}
-
-cd $ROOTDIR

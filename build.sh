@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z NPROC ]; then
+	export NCPU=`nproc`
+fi
+
 [ -d $INSTALLDIR ] && rm -rf $INSTALLDIR
 
 ./download.sh
