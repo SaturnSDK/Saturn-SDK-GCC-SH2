@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z NPROC ]; then
+if [ -z $NPROC ]; then
 	export NCPU=`nproc`
 fi
 
@@ -17,6 +17,13 @@ fi
 
 if [ $? -ne 0 ]; then
 	echo "Failed to extract the source files necessary for building GCC"
+	exit 1
+fi
+
+./patch.sh
+
+if [ $? -ne 0 ]; then
+	echo "Failed to patch packages"
 	exit 1
 fi
 

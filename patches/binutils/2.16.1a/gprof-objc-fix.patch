@@ -1,0 +1,11 @@
+--- a/binutils-2.16.1/gprof/Makefile.in	2004-11-30 17:20:48.000000000 +0000
++++ b/binutils-2.16.1/gprof/Makefile.in	2014-06-10 16:36:49.528576822 +0100
+@@ -263,7 +263,7 @@
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+ 
+ .SUFFIXES:
+-.SUFFIXES: .m .c .dvi .html .info .lo .o .obj .pdf .ps .texi
++.SUFFIXES: .c .dvi .html .info .lo .o .obj .pdf .ps .texi
+ am--refresh:
+ 	@:
+ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
