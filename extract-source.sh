@@ -33,9 +33,7 @@ if [ ! -d newlib-${NEWLIBVER} ]; then
 	fi
 fi
 
-if [ -z "${MPCVER}" ]; then
-	printf ""
-else
+if [ -n "${MPCVER}" ]; then
 	if [ ! -d mpc-${MPCVER} ]; then
 		tar xvpf $DOWNLOADDIR/mpc-${MPCVER}${MPCREV}.tar.gz
 		if [ $? -ne 0 ]; then
@@ -46,9 +44,7 @@ else
 	fi
 fi
 
-if [ -z "${MPFRVER}" ]; then
-	printf ""
-else
+if [ -n "${MPFRVER}" ]; then
 	if [ ! -d mpfr-${MPFRVER} ]; then
 		tar xvjpf $DOWNLOADDIR/mpfr-${MPFRVER}${MPFRREV}.tar.bz2
 		if [ $? -ne 0 ]; then
@@ -59,9 +55,7 @@ else
 	fi
 fi
 
-if [ -z "${GMPVER}" ]; then
-	printf ""
-else
+if [ -n "${GMPVER}" ]; then
 	if [ ! -d gmp-${GMPVER} ]; then
 		tar xvjpf $DOWNLOADDIR/gmp-${GMPVER}${GMPREV}.tar.bz2
 		if [ $? -ne 0 ]; then

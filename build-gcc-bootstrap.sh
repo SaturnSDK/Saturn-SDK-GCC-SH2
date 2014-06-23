@@ -14,11 +14,12 @@ $SRCDIR/gcc-${GCCVER}/configure \
 	--enable-languages=c --disable-threads --disable-libmudflap \
 	--with-gnu-ld --with-gnu-as --with-gcc --disable-libssp --disable-libgomp \
 	--disable-nls --disable-shared --program-prefix=${PROGRAM_PREFIX} \
-	--with-newlib --disable-multilib \
-	${GCC_BOOTSTRAP_FLAGS}
+	--with-newlib --disable-multilib --disable-libgcj \
+	--without-included-gettext \
+	${GCC_BOOTSTRAP_FLAGS} 
 
 make all-gcc -j${NCPU}
 make install-gcc -j${NCPU}
 
-#make all-target-libgcc -j${NCPU}
-#make install-target-libgcc -j${NCPU}
+make all-target-libgcc -j${NCPU}
+make install-target-libgcc -j${NCPU}

@@ -3,6 +3,7 @@
 if [[ "$HOSTMACH" == "$BUILDMACH" ]]; then
 	echo "Build and host are the same.  Building a cross compiler for one host/build architecture"
 	./build.sh
+	exit $?
 fi
 
 if [ -z $NPROC ]; then

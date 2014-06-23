@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ "$HOSTMACH" != "$BUILDMACH" ]]; then
+	echo "Build and host are not the same.  Building a Canadian-cross compiler"
+	./build-canadian.sh
+	exit $?
+fi
+
 if [ -z $NPROC ]; then
 	export NCPU=`nproc`
 fi

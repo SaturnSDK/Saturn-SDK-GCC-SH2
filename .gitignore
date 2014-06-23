@@ -2,8 +2,7 @@
 download
 source
 build
-toolchain
-toolchain_host
+toolchain*
 installerpackage
 
 # Vim

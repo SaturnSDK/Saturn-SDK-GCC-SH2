@@ -28,17 +28,13 @@ else
 	$FETCH ftp://ftp.gnu.org/gnu/mpc/mpc-${MPCVER}${MPCREV}.tar.gz.sig
 	$FETCH ftp://ftp.gnu.org/gnu/mpc/mpc-${MPCVER}${MPCREV}.tar.gz
 fi
-if [ -z "${MPFRVER}" ]; then
-	echo ""
-else
+if [ -n "${MPFRVER}" ]; then
 	$FETCH ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2.sig
 	$FETCH ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2
 fi
-if [ -z "${GMPVER}" ]; then
-	echo ""
-else
-	$FETCH ftp://ftp.gnu.org/gnu/gmp/${GMPVER}${GMPREV}.tar.bz2.sig
-	$FETCH ftp://ftp.gnu.org/gnu/gmp/${GMPVER}${GMPREV}.tar.bz2
+if [ -n "${GMPVER}" ]; then
+	$FETCH ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2.sig
+	$FETCH ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2
 fi
 
 # GPG return status
@@ -60,9 +56,7 @@ if [ $? -ne 0 ]; then
 	fi
 fi
 
-if [ -z "${MPCVER}" ]; then
-	echo ""
-else
+if [ -n "${MPCVER}" ]; then
 	gpg --verify --keyring ./gnu-keyring.gpg mpc-${MPCVER}${MPCREV}.tar.gz.sig
 	if [ $? -ne 0 ]; then
 		if [ $? -ne 0 ]; then
@@ -72,9 +66,7 @@ else
 	fi
 fi
 
-if [ -\ "${MPFRVER}" ]; then
-	echo ""
-else
+if [ -n "${MPFRVER}" ]; then
 	gpg --verify --keyring ./gnu-keyring.gpg mpfr-${MPFRVER}${MPFRREV}.tar.bz2.sig 
 	if [ $? -ne 0 ]; then
 		if [ $? -ne 0 ]; then
