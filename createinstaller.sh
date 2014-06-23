@@ -34,7 +34,7 @@ cat > $ROOTDIR/installerpackage/org.opengamedevelopers.sega.saturn.sdk.gcc/meta/
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
 	<DisplayName>SEGA Saturn SDK GCC ${GCCVER}</DisplayName>
-	<Description>GCC ${GCCVER} optimised for the SEGA Saturn Hitachi SH-2 [${OBJFORMAT}].\n\nHost compiler: $HOSTMACH</Description>
+	<Description>GCC ${GCCVER} optimised for the SEGA Saturn Hitachi SH-2 [${OBJFORMAT}]. Host compiler: $HOSTMACH</Description>
 	<Version>${MAJOR_BUILD_NUM}.${MINOR_BUILD_NUM}.${REVISION_BUILD_NUM}.${BUILD_NUM}</Version>
 	<Name>org.opengamedevelopers.sega.saturn.sdk.gcc</Name>
 	<ReleaseDate>`git log --pretty=format:"%ci" -1 | sed -e 's/ [^ ]*$//g'`</ReleaseDate>
