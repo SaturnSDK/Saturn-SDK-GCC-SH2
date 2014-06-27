@@ -42,8 +42,9 @@ fi
 
 # Build the cross compiler for the target
 export HOSTMACH=$BUILDMACH
-export PROGRAM_PREFIX=sh-elf-
+export PROGRAM_PREFIX=${TARGETMACH}-
 CURRENT_COMPILER="${TARGETMACH} running on ${HOSTMACH}"
+#export PROGRAM_PREFIX=${PREFIXORIG}
 
 ./build-binutils.sh
 if [ $? -ne 0 ]; then
@@ -92,7 +93,7 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-export PROGRAM_PREFIX=sh-elf-
+export PROGRAM_PREFIX=${TARGETMACH}-
 ./build-newlib.sh
 if [ $? -ne 0 ]; then
 	echo "Failed to build newlib for ${CURRENT_COMPILER}"

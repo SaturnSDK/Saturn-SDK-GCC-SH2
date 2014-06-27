@@ -40,8 +40,8 @@ if [ -n "${MPCVER}" ]; then
 			rm -rf mpc-${MPCVER}
 			exit 1
 		fi
-		cp -rv mpc-${MPCVER} gcc-${GCCVER}/mpc
 	fi
+	cp -rv mpc-${MPCVER} gcc-${GCCVER}/mpc
 fi
 
 if [ -n "${MPFRVER}" ]; then
@@ -51,8 +51,8 @@ if [ -n "${MPFRVER}" ]; then
 			rm -rf mpfr-${MPFRVER}
 			exit 1
 		fi
-		cp -rv mpfr-${MPFRVER} gcc-${GCCVER}/mpfr
 	fi
+	cp -rv mpfr-${MPFRVER} gcc-${GCCVER}/mpfr
 fi
 
 if [ -n "${GMPVER}" ]; then
@@ -62,8 +62,8 @@ if [ -n "${GMPVER}" ]; then
 			rm -rf gmp-${GMPVER}
 			exit 1
 		fi
-		cp -rv gmp-${GMPVER} gcc-${GCCVER}/gmp
 	fi
+	cp -rv gmp-${GMPVER} gcc-${GCCVER}/gmp
 fi
 
 echo "Done"
