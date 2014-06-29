@@ -10,6 +10,9 @@ cd $BUILDDIR/gcc-final
 #echo "libc_ctors_header=yes" >> config.cache
 #echo "libc_cv_c_cleanup=yes" >> config.cache
 
+export CFLAGS="-s"
+export CXXFLAGS="-s"
+
 export PATH=$INSTALLDIR/bin:$PATH
 
 $SRCDIR/gcc-${GCCVER}/configure \

@@ -22,6 +22,7 @@ else
 	export PROGRAM_PREFIX=${PROGRAM_PREFIX}elf-
 fi
 
+export BINUTILS_CFLAGS="-s"
 export GCC_BOOTSTRAP_FLAGS="--with-cpu=m2"
 export GCC_FINAL_FLAGS="--with-cpu=m2 --with-sysroot=$SYSROOTDIR"
 

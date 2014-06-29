@@ -7,6 +7,8 @@ mkdir -p $BUILDDIR/gcc-bootstrap
 cd $BUILDDIR/gcc-bootstrap
 
 export PATH=$INSTALLDIR/bin:$PATH
+export CFLAGS="-s"
+export CXXFLAGS="-s"
 
 $SRCDIR/gcc-${GCCVER}/configure \
 	--build=$BUILDMACH --host=$HOSTMACH --target=$TARGETMACH \

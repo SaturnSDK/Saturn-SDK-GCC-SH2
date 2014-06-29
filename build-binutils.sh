@@ -7,6 +7,7 @@ mkdir -p $BUILDDIR/binutils
 cd $BUILDDIR/binutils
 
 export CFLAGS=${BINUTILS_CFLAGS}
+export CXXFLAGS="-s"
 
 $SRCDIR/binutils-${BINUTILSVER}/configure \
 	--disable-werror --host=$HOSTMACH --build=$BUILDMACH --target=$TARGETMACH \
