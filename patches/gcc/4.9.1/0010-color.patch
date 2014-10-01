@@ -1,0 +1,22 @@
+--- a/gcc-4.9.1/gcc/diagnostic-color.c
++++ b/gcc-4.9.1/gcc/diagnostic-color.c
+@@ -263,14 +263,6 @@
+       return true;
+ }
+ 
+-#if defined(_WIN32)
+-bool
+-colorize_init (diagnostic_color_rule_t)
+-{
+-  return false;
+-}
+-#else
+-
+ /* Return true if we should use color when in auto mode, false otherwise. */
+ static bool
+ should_colorize (void)
+@@ -298,4 +290,3 @@
+       gcc_unreachable ();
+     }
+ }
+-#endif
