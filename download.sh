@@ -14,27 +14,57 @@ else
 	exit 1
 fi
 
-$FETCH ftp://ftp.gnu.org/gnu/gnu-keyring.gpg
-
-$FETCH ftp://ftp.gnu.org/gnu/binutils/binutils-${BINUTILSVER}${BINUTILSREV}.tar.bz2.sig
-$FETCH ftp://ftp.gnu.org/gnu/gcc/gcc-${GCCVER}${GCCREV}/gcc-${GCCVER}${GCCREV}.tar.bz2.sig
-
-$FETCH ftp://ftp.gnu.org/gnu/binutils/binutils-${BINUTILSVER}${BINUTILSREV}.tar.bz2
-$FETCH ftp://ftp.gnu.org/gnu/gcc/gcc-${GCCVER}${GCCREV}/gcc-${GCCVER}${GCCREV}.tar.bz2
-$FETCH ftp://sourceware.org/pub/newlib/newlib-${NEWLIBVER}${NEWLIBREV}.tar.gz
-if [ -z "${MPCVER}" ]; then
-	echo ""
+if test "`parallel -V`"; then
+	PARALLEL=TRUE
 else
-	$FETCH ftp://ftp.gnu.org/gnu/mpc/mpc-${MPCVER}${MPCREV}.tar.gz.sig
-	$FETCH ftp://ftp.gnu.org/gnu/mpc/mpc-${MPCVER}${MPCREV}.tar.gz
+	PARALELL=FALSE
 fi
-if [ -n "${MPFRVER}" ]; then
-	$FETCH ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2.sig
-	$FETCH ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2
-fi
-if [ -n "${GMPVER}" ]; then
-	$FETCH ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2.sig
-	$FETCH ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2
+
+if [[ "$PARALLEL" == "FALSE" ]]; then
+	$FETCH ftp://ftp.gnu.org/gnu/gnu-keyring.gpg
+
+	$FETCH ftp://ftp.gnu.org/gnu/binutils/binutils-${BINUTILSVER}${BINUTILSREV}.tar.bz2.sig
+	$FETCH ftp://ftp.gnu.org/gnu/gcc/gcc-${GCCVER}${GCCREV}/gcc-${GCCVER}${GCCREV}.tar.bz2.sig
+
+	$FETCH ftp://ftp.gnu.org/gnu/binutils/binutils-${BINUTILSVER}${BINUTILSREV}.tar.bz2
+	$FETCH ftp://ftp.gnu.org/gnu/gcc/gcc-${GCCVER}${GCCREV}/gcc-${GCCVER}${GCCREV}.tar.bz2
+	$FETCH ftp://sourceware.org/pub/newlib/newlib-${NEWLIBVER}${NEWLIBREV}.tar.gz
+	if [ -n "${MPCVER}" ]; then
+		$FETCH ftp://ftp.gnu.org/gnu/mpc/mpc-${MPCVER}${MPCREV}.tar.gz.sig
+		$FETCH ftp://ftp.gnu.org/gnu/mpc/mpc-${MPCVER}${MPCREV}.tar.gz
+	fi
+	if [ -n "${MPFRVER}" ]; then
+		$FETCH ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2.sig
+		$FETCH ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2
+	fi
+	if [ -n "${GMPVER}" ]; then
+		$FETCH ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2.sig
+		$FETCH ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2
+	fi
+else
+	echo "ftp://ftp.gnu.org/gnu/gnu-keyring.gpg" > downloadlist.txt
+	echo "ftp://ftp.gnu.org/gnu/binutils/binutils-${BINUTILSVER}${BINUTILSREV}.tar.bz2.sig" >> downloadlist.txt
+	echo "ftp://ftp.gnu.org/gnu/gcc/gcc-${GCCVER}${GCCREV}/gcc-${GCCVER}${GCCREV}.tar.bz2.sig" >> downloadlist.txt
+	echo "ftp://ftp.gnu.org/gnu/binutils/binutils-${BINUTILSVER}${BINUTILSREV}.tar.bz2" >> downloadlist.txt
+	echo "ftp://ftp.gnu.org/gnu/gcc/gcc-${GCCVER}${GCCREV}/gcc-${GCCVER}${GCCREV}.tar.bz2" >> downloadlist.txt
+	echo "ftp://sourceware.org/pub/newlib/newlib-${NEWLIBVER}${NEWLIBREV}.tar.gz" >> downloadlist.txt
+
+	if [ -n "${MPCVER}" ]; then
+		echo "ftp://ftp.gnu.org/gnu/mpc/mpc-${MPCVER}${MPCREV}.tar.gz.sig" >> downloadlist.txt
+		echo "ftp://ftp.gnu.org/gnu/mpc/mpc-${MPCVER}${MPCREV}.tar.gz" >> downloadlist.txt
+	fi
+
+	if [ -n "${MPFRVER}" ]; then
+		echo "ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2.sig" >> downloadlist.txt
+		echo "ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2" >> downloadlist.txt
+	fi
+
+	if [ -n "${GMPVER}" ]; then
+		echo "ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2.sig" >> downloadlist.txt
+		echo "ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2" >> downloadlist.txt
+	fi
+
+	cat downloadlist.txt | parallel -j 10 --progress $FETCH
 fi
 
 # GPG return status
