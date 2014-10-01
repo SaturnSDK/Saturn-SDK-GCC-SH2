@@ -15,7 +15,8 @@ export AR_FOR_TARGET=${CROSS}ar
 export RANLIB_FOR_TARGET=${CROSS}ranlib
 
 $SRCDIR/newlib-${NEWLIBVER}/configure --prefix=$INSTALLDIR \
-	--target=$TARGETMACH --build=$BUILDMACH --host=$HOSTMACH
+	--target=$TARGETMACH --build=$BUILDMACH --host=$HOSTMACH \
+	--enable-newlib-nano-malloc
 
 make all -j${NCPU}
 make install -j${NCPU}
