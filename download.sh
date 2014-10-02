@@ -64,7 +64,7 @@ else
 		echo "ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2" >> downloadlist.txt
 	fi
 
-	cat downloadlist.txt | parallel -j 10 --progress $FETCH
+	cat downloadlist.txt | parallel -j 10 --progress --gnu $FETCH
 fi
 
 # GPG return status
