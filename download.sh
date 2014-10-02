@@ -15,9 +15,9 @@ else
 fi
 
 if test "`parallel -V`"; then
-	PARALLEL=TRUE
+	PARALLEL="TRUE"
 else
-	PARALELL=FALSE
+	PARALLEL="FALSE"
 fi
 
 if [[ "$PARALLEL" == "FALSE" ]]; then
