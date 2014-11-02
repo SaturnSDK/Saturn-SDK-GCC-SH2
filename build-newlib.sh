@@ -14,9 +14,11 @@ export AS_FOR_TARGET=${CROSS}as
 export AR_FOR_TARGET=${CROSS}ar
 export RANLIB_FOR_TARGET=${CROSS}ranlib
 
+export newlib_cflags="${newlib_cflags} -DPREFER_SIZE_OVER_SPEED -D__OPTIMIZE_SIZE__"
+
 $SRCDIR/newlib-${NEWLIBVER}/configure --prefix=$INSTALLDIR \
 	--target=$TARGETMACH --build=$BUILDMACH --host=$HOSTMACH \
-	--enable-newlib-nano-malloc
+	--enable-newlib-nano-malloc --enable-target-optspace
 
 make all -j${NCPU}
 make install -j${NCPU}
