@@ -33,7 +33,7 @@ mkdir -p $ROOTDIR/installerpackage/{org.opengamedevelopers.sega.saturn.sdk.gcc/{
 cat > $ROOTDIR/installerpackage/org.opengamedevelopers.sega.saturn.sdk.gcc/meta/package.xml << __EOF__
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-	<DisplayName>SEGA Saturn SDK GCC</DisplayName>
+	<DisplayName>SEGA Saturn SDK GCC ${GCCVER}</DisplayName>
 	<Description>GCC ${GCCVER} optimised for the SEGA Saturn Hitachi SH-2 [${OBJFORMAT}]. Host compiler: $HOSTMACH</Description>
 	<Version>${MAJOR_BUILD_NUM}.${MINOR_BUILD_NUM}.${REVISION_BUILD_NUM}.${BUILD_NUM}</Version>
 	<Name>org.opengamedevelopers.sega.saturn.sdk.gcc</Name>

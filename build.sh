@@ -54,6 +54,13 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
+./build-libstdc++.sh
+
+if [ $? -ne 0 ]; then
+	echo "Failed building libstdc++"
+	exit 1
+fi
+
 ./build-gcc-final.sh
 
 if [ $? -ne 0 ]; then

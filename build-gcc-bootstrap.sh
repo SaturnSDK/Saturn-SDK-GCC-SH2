@@ -13,11 +13,11 @@ export CXXFLAGS="-s"
 $SRCDIR/gcc-${GCCVER}/configure \
 	--build=$BUILDMACH --host=$HOSTMACH --target=$TARGETMACH \
 	--prefix=$INSTALLDIR --without-headers --enable-bootstrap \
-	--enable-languages=c --disable-threads --disable-libmudflap \
+	--enable-languages=c,c++ --disable-threads --disable-libmudflap \
 	--with-gnu-ld --with-gnu-as --with-gcc --disable-libssp --disable-libgomp \
 	--disable-nls --disable-shared --program-prefix=${PROGRAM_PREFIX} \
 	--with-newlib --disable-multilib --disable-libgcj \
-	--without-included-gettext \
+	--without-included-gettext --disable-libstdcxx \
 	${GCC_BOOTSTRAP_FLAGS}
 
 #if [[ "${HOSTMACH}" != "${BUILDMACH}" ]]; then

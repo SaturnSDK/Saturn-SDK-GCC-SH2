@@ -17,7 +17,7 @@ export PATH=$INSTALLDIR/bin:$PATH
 
 $SRCDIR/gcc-${GCCVER}/configure \
 	--build=$BUILDMACH --target=$TARGETMACH --host=$HOSTMACH \
-	--prefix=$INSTALLDIR --enable-languages=c \
+	--prefix=$INSTALLDIR --enable-languages=c,c++ \
 	--with-gnu-as --with-gnu-ld --disable-shared --disable-threads \
 	--disable-multilib --disable-libmudflap --disable-libssp --enable-lto \
 	--disable-nls --with-newlib \
