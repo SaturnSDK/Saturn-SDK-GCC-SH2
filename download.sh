@@ -38,8 +38,8 @@ if [[ "$PARALLEL" == "FALSE" ]]; then
 		$FETCH ftp://ftp.gnu.org/gnu/mpfr/mpfr-${MPFRVER}${MPFRREV}.tar.bz2
 	fi
 	if [ -n "${GMPVER}" ]; then
-		$FETCH ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2.sig
-		$FETCH ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2
+		$FETCH https://gmplib.org/download/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2.sig
+		$FETCH https://gmplib.org/download/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2
 	fi
 else
 	echo "ftp://ftp.gnu.org/gnu/gnu-keyring.gpg" > downloadlist.txt
@@ -60,8 +60,8 @@ else
 	fi
 
 	if [ -n "${GMPVER}" ]; then
-		echo "ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2.sig" >> downloadlist.txt
-		echo "ftp://ftp.gnu.org/gnu/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2" >> downloadlist.txt
+		echo "https://gmplib.org/download/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2.sig" >> downloadlist.txt
+		echo "https://gmplib.org/download/gmp/gmp-${GMPVER}${GMPREV}.tar.bz2" >> downloadlist.txt
 	fi
 
 	cat downloadlist.txt | parallel -j 10 --progress --gnu $FETCH
