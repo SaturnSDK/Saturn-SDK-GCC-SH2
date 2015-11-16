@@ -3,14 +3,14 @@ export BINUTILSVER=2.25.1
 export BINUTILSREV=
 export GCCVER=5.2.0
 export GCCREV=
-export NEWLIBVER=2.2.0.20150623
+export NEWLIBVER=2.2.0.20151032
 export NEWLIBREV=
 export MPCVER=1.0.3
 export MPCREV=
 export MPFRVER=3.1.3
 export MPFRREV=
-export GMPVER=6.0.0
-export GMPREV=a
+export GMPVER=6.1.0
+export GMPREV=
 
 export OBJFORMAT=ELF
 
