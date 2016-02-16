@@ -6,12 +6,16 @@ if [[ "$HOSTMACH" == "$BUILDMACH" ]]; then
 	exit $?
 fi
 
+if [ -z $INSTALLDIR_BUILD_TARGET ]; then
+	INSTALLDIR_BUILD_TARGET=${INSTALLDIR}_build_target
+fi
+
 if [ -z $NPROC ]; then
 	export NCPU=`nproc`
 fi
 
 [ -d $INSTALLDIR ] && rm -rf $INSTALLDIR
-[ -d ${INSTALLDIR}_build_target ] && rm -rf ${INSTALLDIR}_build_target
+[ -d ${INSTALLDIR_BUILD_TARGET} ] && rm -rf ${INSTALLDIR_BUILD_TARGET}
 
 HOSTORIG=$HOSTMACH
 PREFIXORIG=$PROGRAM_PREFIX
@@ -72,9 +76,9 @@ if [ $? -ne 0 ]; then
 fi
 export PROGRAM_PREFIX=$PREFIXORIG
 
-mv ${INSTALLDIR} ${INSTALLDIR}_build_target
+mv ${INSTALLDIR} ${INSTALLDIR_BUILD_TARGET}
 
-export PATH=${INSTALLDIR}_build_target/bin:$PATH
+export PATH=${INSTALLDIR_BUILD_TARGET}/bin:$PATH
 
 # Build the cross compiler for the target using the host to build
 export HOSTMACH=$HOSTORIG
