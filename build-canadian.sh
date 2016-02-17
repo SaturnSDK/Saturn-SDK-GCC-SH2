@@ -11,7 +11,16 @@ if [ -z $INSTALLDIR_BUILD_TARGET ]; then
 fi
 
 if [ -z $NCPU ]; then
-	export NCPU=`nproc`
+	# Mac OS X
+	if $(command -v sysctl >/dev/null 2>&1); then
+		export NCPU=`sysctl -n hw.ncpu`
+	# coreutils
+	elif $(command -v nproc >/dev/null 2>&1); then
+		export NCPU=`nproc`
+	# fallback to non-parallel build if we still have no idea
+	else
+		export NCPU=1
+	fi
 fi
 
 [ -d $INSTALLDIR ] && rm -rf $INSTALLDIR
