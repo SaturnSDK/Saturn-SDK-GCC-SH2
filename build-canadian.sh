@@ -10,7 +10,7 @@ if [ -z $INSTALLDIR_BUILD_TARGET ]; then
 	INSTALLDIR_BUILD_TARGET=${INSTALLDIR}_build_target
 fi
 
-if [ -z $NPROC ]; then
+if [ -z $NCPU ]; then
 	export NCPU=`nproc`
 fi
 

@@ -6,7 +6,7 @@ if [[ "$HOSTMACH" != "$BUILDMACH" ]]; then
 	exit $?
 fi
 
-if [ -z $NPROC ]; then
+if [ -z $NCPU ]; then
 	export NCPU=`nproc`
 fi
 
