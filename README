@@ -24,3 +24,6 @@ BUILDMACH is the development machine the compiler will run on.
 The BUILDMACH is the system architecture the compiler will run on, while the
 TARGETMARCH is the architecture the program or library created will run on.
 
+SKIP_DOWNLOAD can be set to any string to skip the call to `download.sh`, for
+example if the dependency tarballs have already been downloaded using something
+else.
