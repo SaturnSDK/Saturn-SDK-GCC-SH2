@@ -12,13 +12,11 @@ fi
 
 [ -d $INSTALLDIR ] && rm -rf $INSTALLDIR
 
-if [ ! -z $SKIP_DOWNLOAD]; then
-	./download.sh
+./download.sh
 
-	if [ $? -ne 0 ]; then
-		echo "Failed to retrieve the files necessary for building GCC"
-		exit 1
-	fi
+if [ $? -ne 0 ]; then
+	echo "Failed to retrieve the files necessary for building GCC"
+	exit 1
 fi
 
 ./extract-source.sh
