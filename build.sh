@@ -6,8 +6,17 @@ if [[ "$HOSTMACH" != "$BUILDMACH" ]]; then
 	exit $?
 fi
 
-if [ -z $NPROC ]; then
-	export NCPU=`nproc`
+if [ -z $NCPU ]; then
+	# Mac OS X
+	if $(command -v sysctl >/dev/null 2>&1); then
+		export NCPU=`sysctl -n hw.ncpu`
+	# coreutils
+	elif $(command -v nproc >/dev/null 2>&1); then
+		export NCPU=`nproc`
+	# fallback to non-parallel build if we still have no idea
+	else
+		export NCPU=1
+	fi
 fi
 
 [ -d $INSTALLDIR ] && rm -rf $INSTALLDIR
