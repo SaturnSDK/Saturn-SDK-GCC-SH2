@@ -10,8 +10,17 @@ if [ -z $INSTALLDIR_BUILD_TARGET ]; then
 	INSTALLDIR_BUILD_TARGET=${INSTALLDIR}_build_target
 fi
 
-if [ -z $NPROC ]; then
-	export NCPU=`nproc`
+if [ -z $NCPU ]; then
+	# Mac OS X
+	if $(command -v sysctl >/dev/null 2>&1); then
+		export NCPU=`sysctl -n hw.ncpu`
+	# coreutils
+	elif $(command -v nproc >/dev/null 2>&1); then
+		export NCPU=`nproc`
+	# fallback to non-parallel build if we still have no idea
+	else
+		export NCPU=1
+	fi
 fi
 
 [ -d $INSTALLDIR ] && rm -rf $INSTALLDIR
@@ -20,11 +29,13 @@ fi
 HOSTORIG=$HOSTMACH
 PREFIXORIG=$PROGRAM_PREFIX
 
-./download.sh
+if [ -z $SKIP_DOWNLOAD ]; then
+	./download.sh
 
-if [ $? -ne 0 ]; then
-	echo "Failed to retrieve the files necessary for building GCC"
-	exit 1
+	if [ $? -ne 0 ]; then
+		echo "Failed to retrieve the files necessary for building GCC"
+		exit 1
+	fi
 fi
 
 ./extract-source.sh
