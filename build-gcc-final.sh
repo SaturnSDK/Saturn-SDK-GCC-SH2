@@ -15,7 +15,7 @@ export CXXFLAGS="-s"
 
 export PATH=$INSTALLDIR/bin:$PATH
 
-$SRCDIR/gcc-${GCCVER}/configure \
+`realpath --relative-to=./ ${SRCDIR}/gcc-${GCCVER}`/configure \
 	--build=$BUILDMACH --target=$TARGETMACH --host=$HOSTMACH \
 	--prefix=$INSTALLDIR --enable-languages=c,c++ \
 	--with-gnu-as --with-gnu-ld --disable-shared --disable-threads \
@@ -25,3 +25,4 @@ $SRCDIR/gcc-${GCCVER}/configure \
 
 make -j${NCPU}
 make install -j${NCPU}
+

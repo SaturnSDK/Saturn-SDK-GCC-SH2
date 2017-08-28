@@ -10,7 +10,7 @@ export PATH=$INSTALLDIR/bin:$PATH
 export CFLAGS="-s"
 export CXXFLAGS="-s"
 
-$SRCDIR/gcc-${GCCVER}/configure \
+`realpath --relative-to=./ ${SRCDIR}/gcc-${GCCVER}`/configure \
 	--build=$BUILDMACH --host=$HOSTMACH --target=$TARGETMACH \
 	--prefix=$INSTALLDIR --without-headers --enable-bootstrap \
 	--enable-languages=c,c++ --disable-threads --disable-libmudflap \
@@ -32,3 +32,4 @@ make install-gcc -j${NCPU}
 
 make all-target-libgcc -j${NCPU}
 make install-target-libgcc -j${NCPU}
+
